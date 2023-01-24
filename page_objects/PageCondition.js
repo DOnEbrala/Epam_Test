@@ -1,31 +1,39 @@
 const Page = require('./page');
 
-class condition extends Page {
-    get pasteFrame() {
+class Condition extends Page {
+    get PasteMainTextArea() {
         return $('//textarea[@id ="postform-text"]');
     }
-    get clickDrop() {
+    get SyntaxHighlightingDropMenu(){
+        return $(`//span[@id = "select2-postform-format-container"]`)
+    }
+    get SyntaxHighlightingDropMenuChooseOption(){
+        return $(`//li[contains(text(), "Bash")]`)
+    }
+    get ClickExpirationDropMenu() {
         return $(`//span[@id = "select2-postform-expiration-container"]`);
      }
-    get chooseDrop(){
+    get ChooseExpirationDropMenuOption(){
         return $(`//li[contains(text(), "10 Minutes")]`);
     }
-    get titleFrame(){
+    get TitleNamingInput(){
         return $(`//input[@id = "postform-name"]`);
     }
-    get button(){
+    get PasteSubmitButton(){
         return $('button.btn');
     }
-    async pasteBinFrame(args , title) {
-        await this.pasteFrame.setValue(args)
-        await this.clickDrop.click();
-        await this.chooseDrop.click();
-        await this.titleFrame.setValue(title);
-        await this.button.click()
+    async PasteBinConditions(args , title) {
+        await this.PasteMainTextArea.setValue(args);
+        await this.SyntaxHighlightingDropMenu.click();
+        await this.SyntaxHighlightingDropMenuChooseOption.click();
+        await this.ClickExpirationDropMenu.click();
+        await this.ChooseExpirationDropMenuOption.click();
+        await this.TitleNamingInput.setValue(title);
+        await this.PasteSubmitButton.click();
     }
 
 
 
 }
 
-module.exports = new condition();
+module.exports = new Condition();
