@@ -1,17 +1,17 @@
 const Page = require('./page');
 
-class Check extends Page {
-    get CheckBashIfExist(){
+class CheckPage extends Page {
+    get checkBashIfExist(){
         return $(`//a[contains(text(), "Bash")]`);
     }
-    get CheckTextAreaByClassName(){
+    get checkTextAreaByClassName(){
         return $(`//ol[@class = "bash"]`)
     }
-    async BashOptionCheck(){
-        this.CheckBashIfExist.waitForDisplayed();
+    async bashOptionCheck(){
+        this.checkBashIfExist.waitForDisplayed();
     }
 
 
 }
 
-module.exports = new Check();
+module.exports = new CheckPage();

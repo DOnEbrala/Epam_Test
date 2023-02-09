@@ -1,39 +1,39 @@
 const Page = require('./page');
 
-class Condition extends Page {
-    get PasteMainTextArea() {
+class ConditionPage extends Page {
+    get pasteMainTextArea() {
         return $('//textarea[@id ="postform-text"]');
     }
-    get SyntaxHighlightingDropMenu(){
+    get syntaxHighlightingDropMenu(){
         return $(`//span[@id = "select2-postform-format-container"]`)
     }
-    get SyntaxHighlightingDropMenuChooseOption(){
+    get syntaxHighlightingDropMenuChooseOption(){
         return $(`//li[contains(text(), "Bash")]`)
     }
-    get ClickExpirationDropMenu() {
+    get clickExpirationDropMenu() {
         return $(`//span[@id = "select2-postform-expiration-container"]`);
      }
-    get ChooseExpirationDropMenuOption(){
+    get chooseExpirationDropMenuOption(){
         return $(`//li[contains(text(), "10 Minutes")]`);
     }
-    get TitleNamingInput(){
+    get titleNamingInput(){
         return $(`//input[@id = "postform-name"]`);
     }
-    get PasteSubmitButton(){
+    get pasteSubmitButton(){
         return $('button.btn');
     }
-    async PasteBinConditions(args , title) {
-        await this.PasteMainTextArea.setValue(args);
-        await this.SyntaxHighlightingDropMenu.click();
-        await this.SyntaxHighlightingDropMenuChooseOption.click();
-        await this.ClickExpirationDropMenu.click();
-        await this.ChooseExpirationDropMenuOption.click();
-        await this.TitleNamingInput.setValue(title);
-        await this.PasteSubmitButton.click();
+    async pasteBinConditions(args , title) {
+        await this.pasteMainTextArea.setValue(args);
+        await this.syntaxHighlightingDropMenu.click();
+        await this.syntaxHighlightingDropMenuChooseOption.click();
+        await this.clickExpirationDropMenu.click();
+        await this.chooseExpirationDropMenuOption.click();
+        await this.titleNamingInput.setValue(title);
+        await this.pasteSubmitButton.click();
     }
 
 
 
 }
 
-module.exports = new Condition();
+module.exports = new ConditionPage();
